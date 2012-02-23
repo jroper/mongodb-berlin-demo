@@ -138,3 +138,10 @@ h2 {
     background-color: #66bbff;
     padding: 5px;
 }
+.username {
+    font-weight: bold;
+}
+.userposts {
+    color: gray;
+    font-style: italic;
+}

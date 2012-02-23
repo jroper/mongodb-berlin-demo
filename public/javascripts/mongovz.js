@@ -19,15 +19,20 @@ YTF = new (function() {
         $.get("/rest/users", function(users) {
             var userList = $("#loginusers");
             userList.empty();
-            userList.append('<li class="loginOption">Log in as:</li>');
-            var userMap = {};
-            for (var i in users) {
-                var user = users[i];
-                userMap["login-" + user.id] = user;
-                userList.append(setGravatar($('<li class="clickable" id="login-' + user.id + '">' + user.name + '</li>'), user.email, 16));
-                $("#login-" + user.id).click(function() {
-                    login(userMap[$(this).attr("id")]);
-                });
+            if (users.length !== 0) {
+                userList.append('<li class="loginOption">Log in as:</li>');
+                var userMap = {};
+                for (var i in users) {
+                    var user = users[i];
+                    userMap["login-" + user.id] = user;
+                    userList.append(setGravatar($('<li class="clickable" id="login-' + user.id + '">' + user.name + '</li>'), user.email, 16));
+                    $("#login-" + user.id).click(function() {
+                        login(userMap[$(this).attr("id")]);
+                    });
+                }
+            } else {
+                localStorage.removeItem("loggedin");
+                updateLogin();
             }
             userList.append('<li class="loginOption clickable" id="signup">Sign up</li>');
             $("#signup").click(function() {
@@ -78,7 +83,8 @@ YTF = new (function() {
                     } else if (user.id != currentUser.id) {
                         item.append('<div class="addfriend" id="addfriend-' + user.id + '">Add friend</div>');
                     }
-                    item.append("<b>" + user.name + "</b><br/>" + user.email);
+                    item.append('<div class="username">' + user.name + '</div><div class="useremail">'
+                        + user.email + '</div><div class="userposts">Number of posts: ' + user.updates + '</div>');
                     setGravatar(item, user.email, 48, 10);
                 }
                 $(".users .user").click(populateUserFeed);
@@ -116,14 +122,16 @@ YTF = new (function() {
     };
 
     var populateFeed = function() {
-        $.get("/rest/users/" + getCurrentUser().id + "/feed", function(feed) {
-            var content = $("#content");
-            content.empty();
-            content.append('<h2>Feed</h2>');
-            var list = $('<ul class="feed">');
-            content.append(list);
-            renderFeed(feed, list);
-        });
+        if (getCurrentUser()) {
+            $.get("/rest/users/" + getCurrentUser().id + "/feed", function(feed) {
+                var content = $("#content");
+                content.empty();
+                content.append('<h2>Feed</h2>');
+                var list = $('<ul class="feed">');
+                content.append(list);
+                renderFeed(feed, list);
+            });
+        }
     };
 
     var renderFeed = function(feed, list) {
@@ -180,6 +188,8 @@ YTF = new (function() {
         var user = getCurrentUser();
         if (user) {
             setGravatar($("#login").html(user.name), user.email, 16);
+        } else {
+            $("#login").text("Login");
         }
     };
 
@@ -200,6 +210,7 @@ YTF = new (function() {
         initSignup();
         initUpdateStatus();
         $("#users").click(populateUsers);
-        $("#home").click(populateFeed)
+        $("#home").click(populateFeed);
+        populateFeed();
     });
 })();

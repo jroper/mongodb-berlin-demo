@@ -3,4 +3,11 @@
 require:
     - play
     - play -> jersey 0.1
-    - net.vz.mongodb.jackson -> mongo-jackson-mapper 1.3
+    - net.vz.mongodb.jackson -> mongo-jackson-mapper 1.4.0
+
+repositories:
+    - local:
+        type: iBiblio
+        root: "file://${user.home}/.m2/repository/"
+        contains:
+            - net.vz.mongodb.jackson -> *
