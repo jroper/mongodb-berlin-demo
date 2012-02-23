@@ -1,5 +1,6 @@
 package rest;
 
+import com.sun.jersey.spi.resource.Singleton;
 import models.Mocks;
 import models.StatusUpdate;
 import models.User;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Path("/rest/users")
 @Produces(MediaType.APPLICATION_JSON)
+@Singleton
 public class Users {
     @GET
     public List<User> list() {
