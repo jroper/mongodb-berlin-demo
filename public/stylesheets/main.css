@@ -1,0 +1,140 @@
+#signupdialog {
+    display: none;
+}
+
+#statusdialog {
+    display: none;
+}
+
+body {
+    padding: 0;
+    margin: 0 auto;
+    width: 960px;
+}
+
+body, p, li, a {
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 12pt;
+}
+
+#header {
+    border-bottom: 1px solid black;
+    width: 100%;
+    height: 120px;
+    /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fffff), to(#aaaaaa));
+    /* Safari 5.1, Chrome 10+ */
+    background: -webkit-linear-gradient(top, #ffffff, #aaaaaa);
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(top, #ffffff, #aaaaaa);
+}
+
+h2 {
+    margin: 20px;
+}
+
+#rightnav {
+    float: right;
+    margin: 50px 10px 0 0;
+    padding: 0;
+}
+#rightnav li {
+    float: left;
+    list-style-type: none;
+    margin: 5px;
+    padding: 0;    
+}
+#rightnav a {
+    color: black;
+    text-decoration: none;
+}
+#rightnav a:visited {
+    color: black;
+}
+#rightnav a:hover {
+    color: black;
+}
+#loginusers {
+    display: none;
+    margin: 3px 0 0;
+    padding: 0;
+    position: absolute;
+    border: 1px black solid;
+    background-color: white;
+    border-radius: 3px;
+}
+#loginusers li {
+    float: none;
+    margin: 0;
+    padding: 5px;
+}
+#loginusers li.clickable:hover {
+    background-color: #ccddee;
+}
+.loginOption {
+    font-weight: bold;
+    font-size: 0.8em;
+    padding-left: 10px;
+}
+.clickable {
+    cursor: pointer;
+}
+.field {
+    margin: 3px 0;
+}
+.field label {
+    width: 120px;
+    float: left;
+}
+#statusdialog textarea {
+    width: 480px;
+}
+.field input {
+    width: 240px;
+}
+.submit {
+    margin-top: 10px;
+    float: right;
+}
+.feed, .users {
+    margin: 20px;
+    padding: 0;
+}
+.feed li, .users li {
+    margin: 8px;
+    padding: 10px;
+    list-style-type: none;
+    border-radius: 6px;
+    border: 1px solid #aaaaaa;
+    min-height: 48px;
+}
+.feed li:hover {
+    background-color: #eeeeee;
+}
+.statusUpdateAuthor {
+    font-weight: bold;
+    font-size: 0.8em;
+    margin-bottom: 5px;
+}
+.statusUpdateDate {
+    margin-top: 5px;
+    font-size: 0.8em;
+    color: gray;
+    font-style: italic;
+}
+.addfriend {
+    float: right;
+    cursor: pointer;
+    border: 1px solid #44aa44;
+    border-radius: 8px;
+    background-color: #99ff99;
+    padding: 5px;
+}
+.friend {
+    float: right;
+    cursor: pointer;
+    border: 1px solid #2266aa;
+    border-radius: 8px;
+    background-color: #66bbff;
+    padding: 5px;
+}

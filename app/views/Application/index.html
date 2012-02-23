@@ -1,0 +1,50 @@
+#{extends 'main.html' /}
+#{set title:'MongoVZ' /}
+#{set 'moreScripts'}
+    #{script 'mongovz.js'/}
+#{/set}
+
+<div id="header">
+    <img class="titleImage" src="@{'/public/images/mongovz.png'}"/>
+    <ul id="rightnav">
+        <li>
+            <a href="#" id="home">Home</a>
+        </li>
+        <li>
+            <a href="#" id="users">Users</a>
+        </li>
+        <li>
+            <a href="#" id="status">Update status</a>
+        </li>
+        <li>
+            <a href="#" id="login">Login</a>
+            <ul id="loginusers">
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div id="content">
+    Welcome!
+</div>
+
+<div id="signupdialog">
+    <form id="signupsubmit" method="POST">
+        <div class="field">
+            <label for="name">Name:</label><input id="name" type="text" name="name"/>
+        </div>
+        <div class="field">
+            <label for="email">Email:</label><input id="email" type="text" name="email"/>
+        </div>
+        <input type="submit" value="Sign up!" class="submit"/>
+    </form>
+</div>
+
+<div id="statusdialog">
+    <form id="updatestatus" method="POST">
+        <div class="field">
+            <label for="statustext">Status:</label><textarea id="statustext" rows="3" name="statustext"></textarea>
+        </div>
+        <input type="submit" value="Update status" class="submit"/>
+    </form>
+</div>

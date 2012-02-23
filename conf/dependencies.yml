@@ -1,0 +1,6 @@
+# Application dependencies
+
+require:
+    - play
+    - play -> jersey 0.1
+    - net.vz.mongodb.jackson -> mongo-jackson-mapper 1.3
