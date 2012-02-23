@@ -40,6 +40,7 @@ public class Users {
     public Response addFriend(@PathParam("userId") String userId, @PathParam("friendId") String friendId) {
         User user = get(userId);
         user.getFriendIds().add(friendId);
+        user.setUpdates(user.getUpdates() + 1);
         return Response.noContent().build();
     }
     

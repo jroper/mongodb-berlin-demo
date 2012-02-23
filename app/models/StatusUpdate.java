@@ -1,11 +1,9 @@
 package models;
 
-import org.bson.types.ObjectId;
-
 import java.util.Date;
 
 public class StatusUpdate {
-    private String id = new ObjectId().toString();
+    private String id;
     private String text;
     private User author;
     private Date date = new Date();

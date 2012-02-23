@@ -9,6 +9,7 @@ public class User {
     private String id = new ObjectId().toString();
     private String name;
     private String email;
+    private int updates;
     private Set<String> friendIds = new HashSet<String>();
 
     public User() {
@@ -44,5 +45,13 @@ public class User {
 
     public void setFriendIds(Set<String> friendIds) {
         this.friendIds = friendIds;
+    }
+
+    public int getUpdates() {
+        return updates;
+    }
+
+    public void setUpdates(int updates) {
+        this.updates = updates;
     }
 }
