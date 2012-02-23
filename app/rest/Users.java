@@ -45,12 +45,6 @@ public class Users {
         user.setUpdates(user.getUpdates() + 1);
         return Response.noContent().build();
     }
-    
-    @GET
-    @Path("/{userId}/userFeed")
-    public List<StatusUpdate> getUserFeed(@PathParam("userId") String userId) {
-        return Mocks.FEED;
-    }
 
     @POST
     @Path("/{userId}/userFeed")
@@ -58,6 +52,12 @@ public class Users {
         update.setAuthor(get(userId));
         Mocks.FEED.add(0, update);
         return Response.noContent().build();
+    }
+
+    @GET
+    @Path("/{userId}/userFeed")
+    public List<StatusUpdate> getUserFeed(@PathParam("userId") String userId) {
+        return Mocks.FEED;
     }
 
     @GET
