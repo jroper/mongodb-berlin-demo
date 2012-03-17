@@ -8,7 +8,6 @@ import models.User;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.Arrays;
 import java.util.List;
 
 @Path("/rest/users")
@@ -42,7 +41,6 @@ public class Users {
     public Response addFriend(@PathParam("userId") String userId, @PathParam("friendId") String friendId) {
         User user = get(userId);
         user.getFriendIds().add(friendId);
-        user.setUpdates(user.getUpdates() + 1);
         return Response.noContent().build();
     }
 
