@@ -53,12 +53,6 @@ public class Users {
     }
 
     @GET
-    @Path("/{userId}/userFeed")
-    public List<StatusUpdate> getUserFeed(@PathParam("userId") String userId) {
-        return Mocks.FEED;
-    }
-
-    @GET
     @Path("/{userId}/feed")
     public List<StatusUpdate> getFeed(@PathParam("userId") String userId) {
         return Mocks.FEED;
