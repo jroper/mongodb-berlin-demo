@@ -69,6 +69,9 @@ YTF = new (function() {
         $.get("/rest/users", function(users) {
 
             $.get("/rest/users/" + getCurrentUser().id, function(currentUser) {
+                if (currentUser == null) {
+                    currentUser = getCurrentUser()
+                }
                 var content = $("#content");
                 content.empty();
                 content.append('<h2>Users</h2>');
