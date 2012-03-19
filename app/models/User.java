@@ -1,11 +1,14 @@
 package models;
 
 import org.bson.types.ObjectId;
+import org.codehaus.jackson.annotate.JsonProperty;
 
+import javax.persistence.Id;
 import java.util.HashSet;
 import java.util.Set;
 
 public class User {
+    @Id
     private String id = new ObjectId().toString();
     private String name;
     private String email;

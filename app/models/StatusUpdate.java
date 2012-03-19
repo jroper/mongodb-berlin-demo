@@ -1,15 +1,24 @@
 package models;
 
+import net.vz.mongodb.jackson.DBRef;
+import org.bson.types.ObjectId;
+import org.codehaus.jackson.map.annotate.JsonView;
+
 import java.util.Date;
 
 public class StatusUpdate {
-    private String id;
-    private String text;
-    private User author;
-    private Date date = new Date();
+    public static class DbView {}
+    public static class WebView {}
 
+    @JsonView(DbView.class)
+    private ObjectId _id;
+    private String text;
+    @JsonView(DbView.class)
+    private DBRef<User, String> authorId;
+
+    @JsonView(WebView.class)
     public String getId() {
-        return id;
+        return _id.toString();
     }
 
     public String getText() {
@@ -20,19 +29,17 @@ public class StatusUpdate {
         this.text = text;
     }
 
+    @JsonView(WebView.class)
     public User getAuthor() {
-        return author;
+        return authorId.fetch();
     }
 
     public void setAuthor(User author) {
-        this.author = author;
+        this.authorId = new DBRef<User, String>(author.getId(), "users");
     }
 
+    @JsonView(WebView.class)
     public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
+        return new Date(_id.getTime());
     }
 }
